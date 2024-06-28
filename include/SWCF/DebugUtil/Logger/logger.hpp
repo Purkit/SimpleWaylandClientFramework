@@ -27,7 +27,7 @@ namespace DebugUtil {
         private:
             static LogLevel current_log_level;
             static std::mutex logger_mutex;
-    }
+    };
 
     
 }
