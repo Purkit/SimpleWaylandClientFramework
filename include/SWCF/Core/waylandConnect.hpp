@@ -8,19 +8,28 @@ namespace SWCF {
     namespace Core {
 
         class WaylandCompositorConnection {
+
             public:
                 static WaylandCompositorConnection& getInstance();
 
-                static bool connectToWaylandCompositor();
-                static bool disconnectFromWaylandCompositor();
+                bool connectToWaylandCompositor();
+                bool disconnectFromWaylandCompositor();
 
-                static wl_display* getWaylandConnectionHandle();
+                wl_display* getWaylandConnectionHandle();
             
             private:
-                static wl_display* compositor_connection_t;
+                wl_display* m_compositor_connection;
             
             private:
                 static WaylandCompositorConnection* m_Instance;
+            
+            private:                
+                WaylandCompositorConnection() {}
+                ~WaylandCompositorConnection() {}
+            
+            public:
+                WaylandCompositorConnection(const WaylandCompositorConnection&) = delete;
+                WaylandCompositorConnection& operator=(const WaylandCompositorConnection&) = delete;
             
         };
 

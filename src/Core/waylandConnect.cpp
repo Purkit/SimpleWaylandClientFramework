@@ -4,7 +4,6 @@ namespace SWCF {
     namespace Core {
 
         WaylandCompositorConnection* WaylandCompositorConnection::m_Instance = nullptr;
-        wl_display* WaylandCompositorConnection::compositor_connection_t;
 
         WaylandCompositorConnection& WaylandCompositorConnection::getInstance() {
             if (!m_Instance)
@@ -14,19 +13,21 @@ namespace SWCF {
         }
 
         bool WaylandCompositorConnection::connectToWaylandCompositor() {
-            compositor_connection_t = wl_display_connect(NULL);
-            if (!compositor_connection_t)
+            m_compositor_connection = wl_display_connect(NULL);
+            if (!m_compositor_connection)
                 return false;
             return true;
         }
 
         bool WaylandCompositorConnection::disconnectFromWaylandCompositor() {
-            if (compositor_connection_t)
-                wl_display_disconnect(compositor_connection_t);
+            if (m_compositor_connection)
+                wl_display_disconnect(m_compositor_connection);
+                return true;
+            return false;
         }
 
         wl_display* WaylandCompositorConnection::getWaylandConnectionHandle() {
-            return compositor_connection_t;
+            return m_compositor_connection;
         }
     }
 }
