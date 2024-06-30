@@ -8,6 +8,6 @@ add_library(
     ${SWCF_LIBRARY_SOURCES}    
 )
 
-target_link_libraries(SWCF PRIVATE X11 GL)
+target_link_libraries(SWCF PRIVATE wayland-client GL)
 
 target_include_directories(SWCF PUBLIC "${PROJECT_SOURCE_DIR}/include")
