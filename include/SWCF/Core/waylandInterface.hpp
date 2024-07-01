@@ -27,6 +27,10 @@ namespace SWCF {
                 static void InterfaceRemoveEventNotifyCallback(void* data, wl_registry* registry, uint32_t id); // Handle global interface removal
 
                 static wl_registry_listener registry_listeners;
+            
+            private:
+                WaylandCompositorInterface() {}
+                ~WaylandCompositorInterface() {}
 
         };
 

@@ -19,7 +19,7 @@ namespace DebugUtil {
         LOG_LEVEL_VERBOSE = 6
     };
 
-    class NO_EXPORT Logger {
+    class Logger {
         public:
             static void setPrirority(LogLevel log_level);
             static void log_to_console(LogLevel level, const char* fromFile, const char* fromFunction, int atLine, const char *msg, ...);
