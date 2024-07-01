@@ -3,7 +3,7 @@
 namespace DebugUtil {
 
     std::mutex Logger::logger_mutex;
-    LogLevel Logger::current_log_level = LOG_LEVEL_VERBOSE;
+    LogLevel Logger::current_log_level = LogLevel::LOG_LEVEL_VERBOSE;
 
     void Logger::setPrirority(LogLevel log_level) {
         Logger::current_log_level = log_level;
@@ -23,7 +23,7 @@ namespace DebugUtil {
             vsnprintf(out_msg, 500, msg, arg_ptr);
             va_end(arg_ptr);
 
-            printf("%s", log_level_tag[level]);
+            printf("%s", log_level_tag[static_cast<int>(level)]);
             printf("<from %s, function %s, at line %d>", fromFile, fromFunction, atLine);
             printf(" %s", out_msg);
             printf("\n");
