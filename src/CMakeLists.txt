@@ -10,4 +10,4 @@ add_library(
 
 target_link_libraries(SWCF PRIVATE wayland-client GL)
 
-target_include_directories(SWCF PUBLIC "${PROJECT_SOURCE_DIR}/include")
+target_include_directories(SWCF PUBLIC "${CMAKE_SOURCE_DIR}/include")
