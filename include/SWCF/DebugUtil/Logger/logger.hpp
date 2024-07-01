@@ -9,7 +9,7 @@
 
 namespace DebugUtil {
     
-    enum LogLevel {
+    enum class LogLevel {
         LOG_LEVEL_FATAL = 0,
         LOG_LEVEL_CRITICAL = 1,
         LOG_LEVEL_WARN = 2,
@@ -32,14 +32,14 @@ namespace DebugUtil {
     
 }
 
-#define INFO(message, ...) DebugUtil::Logger::log_to_console(enginx::LOG_LEVEL_INFO, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
-#define TRACE(message, ...) DebugUtil::Logger::log_to_console(enginx::LOG_LEVEL_TRACE, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
-#define DEBUG(message, ...) DebugUtil::Logger::log_to_console(enginx::LOG_LEVEL_DEBUG, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
-#define WARN(message, ...) DebugUtil::Logger::log_to_console(enginx::LOG_LEVEL_WARN, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
-#define CRITICAL(message, ...) DebugUtil::Logger::log_to_console(enginx::LOG_LEVEL_CRITICAL, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
-#define FATAL(message, ...) DebugUtil::Logger::log_to_console(enginx::LOG_LEVEL_FATAL, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
-#define ERROR(message, ...) DebugUtil::Logger::log_to_console(enginx::LOG_LEVEL_FATAL, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
-#define VERBOSE(message, ...) DebugUtil::Logger::log_to_console(enginx::LOG_LEVEL_VERBOSE, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
+#define INFO(message, ...) DebugUtil::Logger::log_to_console(DebugUtil::LogLevel::LOG_LEVEL_INFO, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
+#define TRACE(message, ...) DebugUtil::Logger::log_to_console(DebugUtil::LogLevel::LOG_LEVEL_TRACE, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
+#define DEBUG(message, ...) DebugUtil::Logger::log_to_console(DebugUtil::LogLevel::LOG_LEVEL_DEBUG, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
+#define WARN(message, ...) DebugUtil::Logger::log_to_console(DebugUtil::LogLevel::LOG_LEVEL_WARN, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
+#define CRITICAL(message, ...) DebugUtil::Logger::log_to_console(DebugUtil::LogLevel::LOG_LEVEL_CRITICAL, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
+#define FATAL(message, ...) DebugUtil::Logger::log_to_console(DebugUtil::LogLevel::LOG_LEVEL_FATAL, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
+#define ERROR(message, ...) DebugUtil::Logger::log_to_console(DebugUtil::LogLevel::LOG_LEVEL_FATAL, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
+#define VERBOSE(message, ...) DebugUtil::Logger::log_to_console(DebugUtil::LogLevel::LOG_LEVEL_VERBOSE, __FILE__, __func__, __LINE__, message, ##__VA_ARGS__)
 
 
 
