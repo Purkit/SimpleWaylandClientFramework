@@ -1,4 +1,5 @@
 #include <SWCF/Core/waylandInterface.hpp>
+#include <SWCF/DebugUtil/Logger/logger.hpp>
 #include <iostream>
 
 namespace SWCF {
@@ -15,13 +16,20 @@ namespace SWCF {
             if (!m_Instance)
                 m_Instance = new WaylandCompositorInterface();
             
-            return *m_Instance;                
+            DEBUG("Creating singleton instance of class 'WaylandCompositorInterface'.");
+            return *m_Instance;
         }
 
         void WaylandCompositorInterface::Setup(wl_display* compositor_connection_h) {
+            DEBUG("Trying to get the interface registry.");
             wayland_compositor_interface_registry = wl_display_get_registry(compositor_connection_h);
-            wl_registry_add_listener(wayland_compositor_interface_registry, &registry_listeners, nullptr);
+            DEBUG("Got the interface registry.");
+            DEBUG("Now trying to set the registry event listener functions.");
+            wl_registry_add_listener(wayland_compositor_interface_registry, &registry_listeners, this);
+            DEBUG("Success!");
+            DEBUG("Calling 'wl_display_roundtrip'");
             wl_display_roundtrip(compositor_connection_h);
+            DEBUG("WaylandCompositorInterface::Setup Successful");
         }
 
         void WaylandCompositorInterface::NewInterfaceAddEventNotifyCallback(void* data, wl_registry* registry, uint32_t id, const char* interface, uint32_t version) {
@@ -53,8 +61,6 @@ namespace SWCF {
         bool WaylandCompositorInterface::HasInterface(const std::string& interface_name) const {
             return interface_map.find(interface_name) != interface_map.end();
         }
-
-
 
 
     }
