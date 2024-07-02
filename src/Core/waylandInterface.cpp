@@ -50,6 +50,10 @@ namespace SWCF {
             }
         }
 
+        bool WaylandCompositorInterface::HasInterface(const std::string& interface_name) const {
+            return interface_map.find(interface_name) != interface_map.end();
+        }
+
 
 
 

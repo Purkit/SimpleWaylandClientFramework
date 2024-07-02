@@ -16,6 +16,8 @@ namespace SWCF {
                 static WaylandCompositorInterface& getInstance();
 
                 void Setup(wl_display* compositor_connection_h);
+
+                bool HasInterface(const std::string& interface_name) const;
             
             private:
 
