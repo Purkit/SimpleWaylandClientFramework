@@ -62,6 +62,17 @@ namespace SWCF {
             return interface_map.find(interface_name) != interface_map.end();
         }
 
+        void* WaylandCompositorInterface::Bind(const std::string& interface_name, const wl_interface* interface, uint32_t version) {
+
+            auto it = interface_map.find(interface_name);
+            if (it != interface_map.end()) {
+                return wl_registry_bind(wayland_compositor_interface_registry, it->second, interface, version);
+            } else {
+                std::cerr << "Interface " << interface_name << " not found" << std::endl;
+                return nullptr;
+            }
+        }
+
 
     }
 }

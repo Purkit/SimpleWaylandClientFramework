@@ -18,6 +18,8 @@ namespace SWCF {
                 void Setup(wl_display* compositor_connection_h);
 
                 bool HasInterface(const std::string& interface_name) const;
+
+                void* Bind(const std::string& interface_name, const wl_interface* interface, uint32_t version);
             
             private:
 
