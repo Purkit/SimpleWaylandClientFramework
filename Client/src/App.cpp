@@ -3,7 +3,7 @@
 #include <SWCF/DebugUtil/Logger/logger.hpp>
 
 #include <SWCF/Core/waylandConnect.hpp>
-#include <SWCF/Core/waylandInterface.hpp>
+#include <SWCF/Core/waylandInterfaceManager.hpp>
 
 #include <iostream>
 
@@ -22,16 +22,16 @@ namespace WaylandClient {
             exit(1);
         }
 
-        SWCF::Core::WaylandCompositorInterface& waylandCompositorInterface = SWCF::Core::WaylandCompositorInterface::getInstance();
-        waylandCompositorInterface.Setup(waylandCompositorConnection.getWaylandConnectionHandle());
+        SWCF::Core::WaylandCompositorInterfaceManager& waylandCompositorInterfaceManager = SWCF::Core::WaylandCompositorInterfaceManager::getInstance();
+        waylandCompositorInterfaceManager.Initialize(waylandCompositorConnection.getWaylandConnectionHandle());
 
-        if(waylandCompositorInterface.HasInterface("wl_compositor")) {
+        if(waylandCompositorInterfaceManager.HasInterface("wl_compositor")) {
             std::cout << "Interface 'wl_compositor' is supported." << "\n";
         }
         else
             std::cout << "Interface 'wl_compositor is unsupported.'" << "\n";
         
-        if(waylandCompositorInterface.HasInterface("wl_seat")) {
+        if(waylandCompositorInterfaceManager.HasInterface("wl_seat")) {
             std::cout << "Interface 'wl_seat' is supported." << "\n";
         }
         else
