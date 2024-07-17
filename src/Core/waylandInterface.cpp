@@ -20,7 +20,7 @@ namespace SWCF {
             return *m_Instance;
         }
 
-        void WaylandCompositorInterface::Setup(wl_display* compositor_connection_h) {
+        void WaylandCompositorInterface::Initialize(wl_display* compositor_connection_h) {
             DEBUG("Trying to get the interface registry.");
             wayland_compositor_interface_registry = wl_display_get_registry(compositor_connection_h);
             DEBUG("Got the interface registry.");
