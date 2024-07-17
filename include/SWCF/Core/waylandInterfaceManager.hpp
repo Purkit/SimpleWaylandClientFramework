@@ -9,11 +9,11 @@
 namespace SWCF {
     namespace Core {
 
-        class WaylandCompositorInterface {
+        class WaylandCompositorInterfaceManager {
 
             public:
 
-                static WaylandCompositorInterface& getInstance();
+                static WaylandCompositorInterfaceManager& getInstance();
 
                 void Initialize(wl_display* compositor_connection_h);
 
@@ -23,7 +23,7 @@ namespace SWCF {
             
             private:
 
-                static WaylandCompositorInterface* m_Instance;
+                static WaylandCompositorInterfaceManager* m_Instance;
 
 
             private:
@@ -41,8 +41,8 @@ namespace SWCF {
                 static wl_registry_listener registry_listeners;
             
             private:
-                WaylandCompositorInterface() {}
-                ~WaylandCompositorInterface() {}
+                WaylandCompositorInterfaceManager() {}
+                ~WaylandCompositorInterfaceManager() {}
 
         };
 
