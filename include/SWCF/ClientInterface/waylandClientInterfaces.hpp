@@ -25,8 +25,8 @@ namespace SWCF {
                 Compositor& operator=(const Compositor&) = delete;
             
             private:
-                Compositor();
-                ~Compositor();
+                Compositor() {}
+                ~Compositor() {}
 
 
         };
